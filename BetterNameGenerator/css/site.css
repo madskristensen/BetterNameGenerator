@@ -71,6 +71,10 @@ form {
     font-size: 1.5em;
 }
 
+    .result:first-letter {
+        text-transform: uppercase;
+    }
+
     .result p {
         font-size: .8em;
     }

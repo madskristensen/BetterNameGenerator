@@ -111,6 +111,9 @@ nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', funct
 
     function init() {
         $scope.result = nameFactory.getBetterName(gender, name);
+        
+        var names = name.split('-');
+        $scope.firstName = names.length == 0 ? name : names[0];
     }
     
     init();
@@ -131,7 +134,7 @@ nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory
             localStorage['gender'] = $scope.gender;
         }
 
-        $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-"));
+        $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-").toLowerCase());
     };
 
     function init() {

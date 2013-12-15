@@ -8,6 +8,9 @@ nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', funct
 
     function init() {
         $scope.result = nameFactory.getBetterName(gender, name);
+        
+        var names = name.split('-');
+        $scope.firstName = names.length == 0 ? name : names[0];
     }
     
     init();
