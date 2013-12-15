@@ -24,66 +24,68 @@ var nameApp = angular
             });
     }]);
 ///#source 1 1 /app/services/nameFactory.js
+/* globals nameApp */
 
 nameApp.factory('nameFactory', function () {
 
-    var factory = {};
-    var names = {
-        "boys": [
-            "Sancoon",
-            "Bjort",
-            "Crawgy",
-            "Bootan",
-            "Roll",
-            "Tallo",
-            "Farticus",
-        ],
-        "girls": [
-            "Ingroan",
-            "Bamsa",
-            "Fooleen",
-            "Dolla",
-            "Flatulla",
-            "Bawlina",
-        ],
-        "last": [
-            "Smalingo",
-            "Diccus",
-            "deFunky",
-            "Bulldunk",
-        ]
-    }
+    var factory = {},
+        names = {
+            "boys": [
+                "Sancoon",
+                "Bjort",
+                "Crawgy",
+                "Bootan",
+                "Roll",
+                "Tallo",
+                "Farticus",
+            ],
+            "girls": [
+                "Ingroan",
+                "Bamsa",
+                "Fooleen",
+                "Dolla",
+                "Flatulla",
+                "Bawlina",
+            ],
+            "last": [
+                "Smalingo",
+                "Diccus",
+                "deFunky",
+                "Bulldunk",
+            ]
+        };
 
     factory.getBetterName = function (gender, name) {
-        
-        var list = gender == "male" ? names.boys : names.girls;
+
+        var list = gender === "male" ? names.boys : names.girls;
         var hash = (gender + name.toLowerCase()).hashCode();
 
         var first = Math.abs(hash % list.length);
         var last = Math.abs(hash % names.last.length);
 
         return list[first] + " " + names.last[last];
-    }
+    };
 
     String.prototype.hashCode = function () {
         var hash = 0;
-        if (this.length == 0) return hash;
+        if (this.length === 0) return hash;
         for (var i = 0; i < this.length; i++) {
             var character = this.charCodeAt(i);
             hash = ((hash << 5) - hash) + character;
             hash = hash & hash; // Convert to 32bit integer
         }
         return hash;
-    }
+    };
 
     return factory;
 });
 ///#source 1 1 /app/services/testimonialfactory.js
+/* globals nameApp */
 
 nameApp.factory('testimonialFactory', function () {
 
-    var factory = {};
-    var testimonials = [
+    var factory = {},
+        testimonials = [
         {
             "quote": "My final toe developed in just 3 days. Thanks Numberology!",
             "author": "Joozy Socker",
@@ -91,21 +93,20 @@ nameApp.factory('testimonialFactory', function () {
         {
             "quote": "I never have to stand in line at the bakery any more.",
             "author": "Sanco Bulldunk",
-        },
-    ]
+        }
+        ];
 
     factory.getTestimonial = function () {
-        var rnd = Math.random();
-        var index = Math.round(rnd % testimonials.length);
+        var rnd = Math.random(),
+            index = Math.round(rnd % testimonials.length);
 
         return testimonials[index];
-    }
+    };
 
     return factory;
 });
 ///#source 1 1 /app/controllers/resultController.js
-
-
+/* globals nameApp */
 
 nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', function ($scope, $route, nameFactory) {
 
@@ -116,14 +117,13 @@ nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', funct
         $scope.result = nameFactory.getBetterName(gender, name);
         
         var names = name.split('-');
-        $scope.firstName = names.length == 0 ? name : names[0];
+        $scope.firstName = names.length === 0 ? name : names[0];
     }
     
     init();
 }]);
 ///#source 1 1 /app/controllers/nameController.js
-
-
+/* globals nameApp */
 
 nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory', function ($scope, $location, testimonialFactory) {
 
@@ -133,8 +133,8 @@ nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory
 
     $scope.generate = function () {
         if (localStorage) {
-            localStorage['name'] = $scope.name;
-            localStorage['gender'] = $scope.gender;
+            localStorage.name = $scope.name;
+            localStorage.gender = $scope.gender;
         }
 
         $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-").toLowerCase());

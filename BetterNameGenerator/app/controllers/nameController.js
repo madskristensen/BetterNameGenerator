@@ -1,5 +1,4 @@
-﻿
-
+﻿/* globals nameApp */
 
 nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory', function ($scope, $location, testimonialFactory) {
 
@@ -9,8 +8,8 @@ nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory
 
     $scope.generate = function () {
         if (localStorage) {
-            localStorage['name'] = $scope.name;
-            localStorage['gender'] = $scope.gender;
+            localStorage.name = $scope.name;
+            localStorage.gender = $scope.gender;
         }
 
         $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-").toLowerCase());

@@ -1,5 +1,4 @@
-﻿
-
+﻿/* globals nameApp */
 
 nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', function ($scope, $route, nameFactory) {
 
@@ -10,7 +9,7 @@ nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', funct
         $scope.result = nameFactory.getBetterName(gender, name);
         
         var names = name.split('-');
-        $scope.firstName = names.length == 0 ? name : names[0];
+        $scope.firstName = names.length === 0 ? name : names[0];
     }
     
     init();
