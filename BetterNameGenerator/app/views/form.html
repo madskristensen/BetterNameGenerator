@@ -1,0 +1,25 @@
+﻿
+<em>
+    {{testimonial.quote}}
+    <strong>- {{testimonial.name}}</strong>
+</em>
+
+<form ng-submit="generate()">
+
+    <label for="name" class="control-label lead">Enter your full name</label>
+    <input type="text" id="name" ng-model="name" placeholder="Your full name" required>
+
+    <br />
+
+    <div>
+        <label class="control-label" for="male">Male</label>
+        <input type="radio" id="male" ng-model="gender" value="male" />
+        &nbsp;
+        <label for="female">Female</label>
+        <input type="radio" id="female" ng-model="gender" value="female" />
+    </div>
+
+    <br />
+
+    <button>Generate</button>
+</form>
