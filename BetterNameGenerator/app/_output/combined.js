@@ -35,19 +35,22 @@ nameApp.factory('nameFactory', function () {
             "Crawgy",
             "Bootan",
             "Roll",
-            "Tallo"
+            "Tallo",
+            "Farticus",
         ],
         "girls": [
             "Ingroan",
             "Bamsa",
             "Fooleen",
-            "Dolla"
+            "Dolla",
+            "Flatulla",
+            "Bawlina",
         ],
         "last": [
             "Smalingo",
             "Diccus",
             "deFunky",
-            "Farticus",
+            "Bulldunk",
         ]
     }
 
