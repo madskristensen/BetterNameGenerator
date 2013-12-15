@@ -30,26 +30,24 @@ nameApp.factory('nameFactory', function () {
     var factory = {};
     var names = {
         "boys": [
-            "Mads",
-            "Sayed",
-            "Scott",
-            "Peter",
-            "Todd",
-            "Barry"
+            "Sancoon",
+            "Bjort",
+            "Crawgy",
+            "Bootan",
+            "Roll",
+            "Tallo"
         ],
         "girls": [
-            "Reshmi",
-            "Anh",
-            "Samantha",
-            "Caitlin"
+            "Ingroan",
+            "Bamsa",
+            "Fooleen",
+            "Dolla"
         ],
         "last": [
-            "Hashimi",
-            "Kristensen",
-            "Tang",
-            "Grunke",
-            "Spada",
-            "Hunter"
+            "Smalingo",
+            "Diccus",
+            "deFunky",
+            "Farticus",
         ]
     }
 
@@ -133,7 +131,7 @@ nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory
             localStorage['gender'] = $scope.gender;
         }
 
-        $location.path('/result/' + $scope.gender + '/' + $scope.name);
+        $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-"));
     };
 
     function init() {
