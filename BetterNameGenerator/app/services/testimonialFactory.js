@@ -4,7 +4,7 @@ nameApp.factory('testimonialFactory', function () {
     var factory = {};
     var testimonials = [
         {
-            "quote": "My last hand developed in just 3 days. Thanks Numberology!",
+            "quote": "My final toe developed in just 3 days. Thanks Numberology!",
             "author": "Joozy Socker",
         },
         {

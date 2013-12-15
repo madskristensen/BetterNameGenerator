@@ -1,13 +1,13 @@
 ﻿body {
-    font: 13pt arial;
-    max-width: 500px;
     margin: 0 auto;
+    max-width: 500px;
+    font: 13pt arial;
 }
 
 header {
-    text-align: right;
     height: 175px;
     background: url(/img/logo.png) no-repeat top left;
+    text-align: right;
 }
 
     header a {
@@ -16,8 +16,8 @@ header {
     }
 
     header h1 {
-        font-size: 3em;
         margin-bottom: 5px;
+        font-size: 3em;
     }
 
     header p {
@@ -35,22 +35,22 @@ em {
     }
 
 form {
+    padding: 1em 3em;
     border: 1px solid silver;
     border-radius: 20px;
-    padding: 1em 3em;
     background: #f1f1f1;
     text-align: center;
 }
 
     form input[type=text] {
-        text-transform: capitalize;
         display: block;
-        width: 100%;
-        font: inherit;
-        border-radius: 5px;
-        border: 1px solid silver;
-        padding: 5px;
         margin-top: 10px;
+        padding: 5px;
+        width: 100%;
+        border: 1px solid silver;
+        border-radius: 5px;
+        text-transform: capitalize;
+        font: inherit;
     }
 
     form label {
@@ -58,17 +58,17 @@ form {
     }
 
     form button {
-        font: inherit;
+        padding: 5px 10px;
         border: none;
         border-radius: 5px;
-        padding: 5px 10px;
-        color: white;
         background: #0094ff;
+        color: white;
+        font: inherit;
     }
 
 .result {
-    font-size: 1.5em;
     text-align: center;
+    font-size: 1.5em;
 }
 
     .result p {
