@@ -1,7 +1,7 @@
 ﻿
 
 
-nameApp.controller('nameController',['$scope', '$location', function ($scope, $location) {
+nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory', function ($scope, $location, testimonialFactory) {
 
     $scope.name = '';
     $scope.gender = '';
@@ -21,9 +21,11 @@ nameApp.controller('nameController',['$scope', '$location', function ($scope, $l
             $scope.name = localStorage.getItem('name');
             $scope.gender = localStorage.getItem('gender') || 'male';
         }
-
-        $scope.testimonial.quote = "My last hand developed in just 3 days. Thanks Numberology!";
-        $scope.testimonial.name = "Joozy Socker";
+        
+        var t = testimonialFactory.getTestimonial();
+        
+        $scope.testimonial.quote = t.quote;
+        $scope.testimonial.name = t.author;
     }
 
     init();

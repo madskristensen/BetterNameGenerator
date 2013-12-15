@@ -77,6 +77,31 @@ nameApp.factory('nameFactory', function () {
 
     return factory;
 });
+///#source 1 1 /app/services/testimonialfactory.js
+
+nameApp.factory('testimonialFactory', function () {
+
+    var factory = {};
+    var testimonials = [
+        {
+            "quote": "My last hand developed in just 3 days. Thanks Numberology!",
+            "author": "Joozy Socker",
+        },
+        {
+            "quote": "I never have to stand in line at the bakery any more.",
+            "author": "Sanco Bulldunk",
+        },
+    ]
+
+    factory.getTestimonial = function () {
+        var rnd = Math.random();
+        var index = Math.round(rnd % testimonials.length);
+
+        return testimonials[index];
+    }
+
+    return factory;
+});
 ///#source 1 1 /app/controllers/resultController.js
 
 
@@ -96,7 +121,7 @@ nameApp.controller('resultController', ['$scope', '$route', 'nameFactory', funct
 
 
 
-nameApp.controller('nameController',['$scope', '$location', function ($scope, $location) {
+nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory', function ($scope, $location, testimonialFactory) {
 
     $scope.name = '';
     $scope.gender = '';
@@ -116,9 +141,11 @@ nameApp.controller('nameController',['$scope', '$location', function ($scope, $l
             $scope.name = localStorage.getItem('name');
             $scope.gender = localStorage.getItem('gender') || 'male';
         }
-
-        $scope.testimonial.quote = "My last hand developed in just 3 days. Thanks Numberology!";
-        $scope.testimonial.name = "Joozy Socker";
+        
+        var t = testimonialFactory.getTestimonial();
+        
+        $scope.testimonial.quote = t.quote;
+        $scope.testimonial.name = t.author;
     }
 
     init();
