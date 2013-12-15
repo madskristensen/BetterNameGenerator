@@ -12,6 +12,7 @@ nameApp.factory('nameFactory', function () {
                 "Roll",
                 "Tallo",
                 "Farticus",
+                "Droolio",
             ],
             "girls": [
                 "Ingroan",
@@ -20,12 +21,14 @@ nameApp.factory('nameFactory', function () {
                 "Dolla",
                 "Flatulla",
                 "Bawlina",
+                "Drooly",
             ],
             "last": [
                 "Smalingo",
                 "Diccus",
                 "deFunky",
                 "Bulldunk",
+                "Haberdashery",
             ]
         };
 

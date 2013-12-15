@@ -12,7 +12,9 @@ nameApp.controller('nameController', ['$scope', '$location', 'testimonialFactory
             localStorage.gender = $scope.gender;
         }
 
-        $location.path('/result/' + $scope.gender + '/' + $scope.name.replace(/ /ig, "-").toLowerCase());
+        var name = $scope.name.trim().replace(/ /ig, "-").toLowerCase()
+
+        $location.path('/result/' + $scope.gender + '/' + name);
     };
 
     function init() {
