@@ -4,7 +4,7 @@ nameApp.factory('nameFactory', function () {
 
     var factory = {},
         names = {
-            "boys": [
+            "male": [
                 "Sancoon",
                 "Bjort",
                 "Crawgy",
@@ -14,7 +14,7 @@ nameApp.factory('nameFactory', function () {
                 "Farticus",
                 "Droolio",
             ],
-            "girls": [
+            "female": [
                 "Ingroan",
                 "Bamsa",
                 "Fooleen",
@@ -34,7 +34,7 @@ nameApp.factory('nameFactory', function () {
 
     factory.getBetterName = function (gender, name) {
 
-        var list = gender === "male" ? names.boys : names.girls;
+        var list = names[gender];
         var hash = (gender + name.toLowerCase()).hashCode();
 
         var first = Math.abs(hash % list.length);
