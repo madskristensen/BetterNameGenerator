@@ -1,0 +1,50 @@
+﻿@{
+    string title = "Numberology";
+    string description = "Numberology helps you find a new, better and unique name";
+}
+
+<!DOCTYPE html>
+<html data-ng-app="nameApp" lang="en">
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <title>@title</title>
+    <meta name="description" content="@description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="@Fingerprint.Tag("/css/site.min.css")" rel="stylesheet" />
+
+    <meta name="application-name" content="@title" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="@title" />
+    <meta name="twitter:description" content="@description" />
+    <meta name="twitter:image" content="/img/logo.png" />
+    <meta name="twitter:creator" content="@("@mkristensen")" />
+    <meta name="twitter:site" content="@("@mkristensen")" />
+
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="@Fingerprint.Tag("/img/logo.png")" />
+
+    <link rel="apple-touch-icon" href="@Fingerprint.Tag("/img/logo.png")" />
+    <link rel="shortcut icon" href="@Fingerprint.Tag("/img/icon.png")" />
+</head>
+<body>
+
+    <header>
+        <a href="/">
+            <h1>@title</h1>
+            <p>Numerology's brain dead cousin</p>
+        </a>
+    </header>
+
+    <div role="main">
+        <div data-ng-view></div>
+    </div>
+
+    <script src="@Fingerprint.Tag("/Scripts/angular.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js")"></script>
+    <script src="@Fingerprint.Tag("/scripts/angular-route.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js")"></script>
+    <script src="@Fingerprint.Tag("/app/_output/combined.min.js")"></script>
+</body>
+</html>
