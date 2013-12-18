@@ -55,6 +55,7 @@ nameApp.factory('nameFactory', function () {
                 "deFunky",
                 "Bulldunk",
                 "Haberdashery",
+                "McDorky",
             ]
         };
 
