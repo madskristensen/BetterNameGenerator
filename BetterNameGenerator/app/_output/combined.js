@@ -11,12 +11,12 @@ var nameApp = angular
             .when('/',
             {
                 controller: 'nameController',
-                templateUrl: '/app/views/form.html'
+                templateUrl: '/app/views/form.min.html'
             })
             .when('/result/:gender/:name',
             {
                 controller: 'resultController',
-                templateUrl: '/app/views/result.html'
+                templateUrl: '/app/views/result.min.html'
             })
             .otherwise(
             {
