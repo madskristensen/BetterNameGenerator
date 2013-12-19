@@ -11,7 +11,7 @@
     <meta name="description" content="@description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="@Fingerprint.Tag("/css/site.min.css")" rel="stylesheet" />
+    <link href="@Fingerprint("/css/site.min.css")" rel="stylesheet" />
 
     <meta name="application-name" content="@title" />
 
@@ -25,10 +25,10 @@
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="@Fingerprint.Tag("/img/logo.png")" />
+    <meta property="og:image" content="@Fingerprint("/img/logo.png")" />
 
-    <link rel="apple-touch-icon" href="@Fingerprint.Tag("/img/logo.png")" />
-    <link rel="shortcut icon" href="@Fingerprint.Tag("/img/icon.png")" />
+    <link rel="apple-touch-icon" href="@Fingerprint("/img/logo.png")" />
+    <link rel="shortcut icon" href="@Fingerprint("/img/icon.png")" />
 </head>
 <body>
 
@@ -43,8 +43,38 @@
         <div data-ng-view></div>
     </div>
 
-    <script src="@Fingerprint.Tag("/Scripts/angular.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js")"></script>
-    <script src="@Fingerprint.Tag("/scripts/angular-route.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js")"></script>
-    <script src="@Fingerprint.Tag("/app/_output/combined.min.js")"></script>
+    <script src="@Fingerprint("/Scripts/angular.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js")"></script>
+    <script src="@Fingerprint("/scripts/angular-route.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js")"></script>
+    <script src="@Fingerprint("/app/_output/combined.min.js")"></script>
 </body>
 </html>
+
+@functions{
+    private string Fingerprint(string rootRelativePath, string cdnPath = "")
+    {
+        if (!string.IsNullOrEmpty(cdnPath) && !Context.IsDebuggingEnabled)
+        {
+            return cdnPath;
+        }
+
+        if (HttpRuntime.Cache[rootRelativePath] == null)
+        {
+            string relative = VirtualPathUtility.ToAbsolute("~" + rootRelativePath);
+            string absolute = Server.MapPath(relative);
+
+            if (!File.Exists(absolute))
+            {
+                throw new FileNotFoundException("File not found", absolute);
+            }
+
+            DateTime date = File.GetLastWriteTime(absolute);
+            int index = relative.LastIndexOf('/');
+
+            string result = relative.Insert(index, "/v-" + date.Ticks);
+
+            HttpRuntime.Cache.Insert(rootRelativePath, result, new System.Web.Caching.CacheDependency(absolute));
+        }
+
+        return HttpRuntime.Cache[rootRelativePath] as string;
+    }
+}
