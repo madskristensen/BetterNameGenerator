@@ -39,6 +39,9 @@ nameApp.factory('nameFactory', function () {
                 "Tallo",
                 "Farticus",
                 "Droolio",
+                "Dorcas",
+                "Spank",
+                "Jazz",
             ],
             "female": [
                 "Ingroan",
@@ -56,6 +59,7 @@ nameApp.factory('nameFactory', function () {
                 "Bulldunk",
                 "Haberdashery",
                 "McDorky",
+                "Craphoolio",
             ]
         };
 
