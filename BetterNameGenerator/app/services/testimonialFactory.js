@@ -11,13 +11,15 @@ nameApp.factory('testimonialFactory', function () {
         {
             "quote": "I never have to stand in line at the bakery any more.",
             "author": "Sanco Bulldunk",
+        },
+        {
+            "quote": "I could never run a marathon before I got my new name.",
+            "author": "Drooly McDorky",
         }
         ];
 
     factory.getTestimonial = function () {
-        var rnd = Math.random(),
-            index = Math.round(rnd % testimonials.length);
-
+        var index = Math.floor((Math.random() * testimonials.length));
         return testimonials[index];
     };
 
