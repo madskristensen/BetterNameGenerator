@@ -10,7 +10,7 @@ nameApp.factory('testimonialFactory', function () {
         },
         {
             "quote": "I never have to stand in line at the bakery any more.",
-            "author": "Sanco Bulldunk",
+            "author": "Spank deFunky",
         },
         {
             "quote": "I could never run a marathon before I got my new name.",
