@@ -104,7 +104,7 @@ nameApp.factory('testimonialFactory', function () {
         },
         {
             "quote": "I could never run a marathon before I got my new name.",
-            "author": "Drooly McDorky",
+            "author": "Droolie McDorky",
         }
         ];
 
