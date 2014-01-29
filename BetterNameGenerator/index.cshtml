@@ -1,6 +1,7 @@
-﻿@{
+﻿@using System.Globalization;
+@{
     string title = "Numberology";
-    string description = "Numberology helps you find a new, better and unique name";
+    string description = GetDescription();
 }
 
 <!DOCTYPE html>
@@ -25,7 +26,8 @@
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="@Fingerprint("/img/logo.png")" />
+    <meta property="og:url" content="@Request.Url.Scheme://@Request.Url.Host@Request.RawUrl" />
+    <meta property="og:image" content="@Request.Url.Scheme://@Request.Url.Host/img/logo.png" />
 
     <link rel="apple-touch-icon" href="@Fingerprint("/img/logo.png")" />
     <link rel="shortcut icon" href="@Fingerprint("/img/icon.png")" />
@@ -40,7 +42,7 @@
     </header>
 
     <div role="main">
-        <div data-ng-view></div>
+        <ng-view />
     </div>
 
     <script src="@Fingerprint("/Scripts/angular.min.js", "//ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js")"></script>
@@ -76,5 +78,18 @@
         }
 
         return HttpRuntime.Cache[rootRelativePath] as string;
+    }
+
+    private string GetDescription()
+    {
+        string name = Request.QueryString["name"];
+        
+        if (string.IsNullOrEmpty(name))
+            return "Numberology helps you find a new, better and unique name";
+
+        name = name.Split('-')[0];
+        name = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(name);
+
+        return name + " got a new name. You need a new one too!";
     }
 }

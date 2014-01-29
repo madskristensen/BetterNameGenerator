@@ -50,14 +50,14 @@ nameApp.factory('nameFactory', function () {
                 "Dolla",
                 "Flatulla",
                 "Bawlina",
-                "Drooly",
+                "Droolie",
             ],
             "last": [
                 "Smalingo",
                 "Diccus",
                 "deFunky",
                 "Bulldunk",
-                "Haberdashery",
+                "Haberdouchery",
                 "McDorky",
                 "Craphoolio",
             ]
